@@ -30,6 +30,7 @@ var app = {
     onDeviceReady: function () {
         this.receivedEvent('deviceready')
     },
+
     takePhoto: function () {
         console.log("button Clicked")
         navigator.camera.getPicture( app.onSuccess, app.onFail, {
@@ -47,6 +48,21 @@ var app = {
     onFail: function (message) {
         alert('Failed because: ' + message);
     }
-}
+};
+window.addEventListener("batterystatus", onBatteryStatus, false);
+
+function onBatteryStatus(status) {
+    console.log("Level: " + status.level + " isPlugged: " + status.isPlugged);
+};
+window.addEventListener("batterylow", onBatteryLow, false);
+
+function onBatteryLow(status) {
+    alert("Battery Level Low " + status.level + "%");
+};
+window.addEventListener("batterycritical", onBatteryCritical, false);
+
+function onBatteryCritical(status) {
+    alert("Battery Level Critical " + status.level + "%\nRecharge Soon!");
+};
 
 app.initalize();

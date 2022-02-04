@@ -1,0 +1,7 @@
+{
+  "name": "cameraworkshop",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "custom"
+}
